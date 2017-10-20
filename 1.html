@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/1.css"/>
+		<script>
+			/*
+			 * 需求：首先生成9行10列的div阵列，每个div的style设置好。鼠标移上去对应div大小，透明度变化
+			 * 分析：生成9*10的div，for循环，改变定位的top和left值
+			 *      对生成的div建立数组，对应下标来判定鼠标移入变化
+			 */
+			
+			
+			window.onload=function(){
+				var boxs=document.getElementById("box");
+				
+				var sty='';
+				
+				for( var i=0;i<9;i++){
+					for(j=0;j<10;j++){
+						sty+='<div style="left:'+j*102+'px;top:'+i*102+'px;background:url(img/pic.jpg) -'+j*100+'px -'+i*100+'px"></div>';
+						
+					}
+					boxs.innerHTML=sty;
+				}
+				var divs=document.querySelectorAll("#box div");
+				console.dir(divs);
+				for(var i=0;i<divs.length;i++){
+					divs[i].onmouseover=function(){
+						this.style.opacity=1;
+						this.style.transform='scale(1.5)';
+					};
+					divs[i].onmouseout=function(){
+						this.style.opacity=1;
+						this.style.transform='scale(1)';
+					};
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<section id="box">
+			
+		</section>
+	</body>
+</html>

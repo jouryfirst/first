@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/3.css"/>
+		<script>
+			/*
+			 * 需求：点击左右箭头，图片切换，图片数量span改变，p改变，小圆点改变
+			 * 顺序切换和循环切换
+			 * 
+			 * 第一步分析：1、获取btn
+			 *            2、给btn添加事件
+			 *                 数组
+			 */
+			window.onload=function(){
+				var prev=document.querySelector('.prev');
+				var next=document.querySelector('.next');
+				var pic=document.getElementById('pic');
+				var num=document.querySelector('h3 span');
+				var jieshao=document.querySelector('p');
+				var shunxu=document.getElementById('shunxu');
+				var xunhuan=document.getElementById('xunhuan');
+				var yuandian=document.querySelectorAll(".yuandian span");
+				var last=yuandian[0];	
+				var n=0;
+				var on=true;
+				var imgArr=['1','2','3','4','5'];//把图片放到数组中
+				//console.dir(imgArr);
+				var pArr=['明前春茶又叫“明前茶”，指清明节前采制的茶叶','每次小S发微博晒她家女儿许老三的照片的时候','吃货福利一卡通，吃货们！ 福利来啦！一卡通拿去不谢！','夏春新品大牌走秀款印花上衣外套半身裙修身两件套连衣裙','实木家具都是未经再次加工的天然材料,不使用任何'];//把介绍放到数组中
+				shunxu.onclick=function(){
+					on=true;
+					this.className='act';
+					xunhuan.className='';
+				}
+				xunhuan.onclick=function(){
+					on=false;
+					this.className='act';
+					shunxu.className='';
+				}
+				
+				next.onclick=function(){
+					n++;
+					if(n>imgArr.length-1){
+						if(on==true)
+						{n=imgArr.length-1;
+						}
+						else{
+							n=0;
+						}
+					}
+					pic.src='img/'+imgArr[n]+'.jpg';
+					num.innerHTML=n+1+'/'+imgArr.length;
+					jieshao.innerHTML=pArr[n];
+					//console.log(imgArr[n]);
+					last.className='';
+					yuandian[n].className='active';
+					last=yuandian[n];
+				};
+				prev.onclick=function(){
+					n--;
+					if(n<0){
+						if(on==true){n=0;
+						   }
+						else{n=imgArr.length-1}}
+					pic.src='img/'+imgArr[n]+'.jpg';
+					num.innerHTML=n+1+'/'+imgArr.length;
+					jieshao.innerHTML=pArr[n];
+					last.className='';
+					yuandian[n].className='active';
+					last=yuandian[n];
+				};
+				for(var i=0;i<yuandian.length;i++){
+					yuandian[i].index=i;
+					yuandian[i].onclick=function(){
+						last.className='';
+						this.className='active';
+						last=this;
+						
+						n=this.index;
+						num.innerHTML=n+1+'/'+imgArr.length;
+						pic.src='img/'+imgArr[n]+'.jpg';
+						jieshao.innerHTML=pArr[n];
+					};
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<section id="box">
+			<img id="pic" src="img/1.jpg"/>
+			<a href="javascript:;" class="prev"><</a>
+			<a href="javascript:;" class="next">></a>
+			<div class="yuandian">
+					<span class="active"></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			<h3>图片数量 <span>1/5</span></h3>
+			<p>明前春茶又叫“明前茶”，指清明节前采制的茶叶</p>
+			<input type="button" value="顺序切换" id="shunxu" class="act"/>
+			<input type="button" value="循环切换" id="xunhuan" class=""/>
+		</section>
+	</body>
+</html>

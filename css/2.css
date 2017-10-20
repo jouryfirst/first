@@ -1,0 +1,44 @@
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: white;
+	font-size: 12px;
+}
+/*初始化*/
+
+
+
+
+.box{
+	width: 260px;
+	background: #ed6355;
+	box-shadow: 0 10px 20px #333;
+	color: white;
+	font-family: "微软雅黑";
+}
+.box ul li div{
+	padding: 0 30px;
+	height: 50px;
+	line-height: 50px;
+}
+.box ul li div span{
+	font-size: 20px;
+	float: right;
+	cursor: pointer;
+}
+.box ul li div:hover{
+	background: #ed7f55;
+}
+.box li ul{
+	background: #383838;
+	display: none;
+}
+.box li ul li{
+	height: 40px;
+	line-height: 40px;
+	text-indent: 70px;
+}

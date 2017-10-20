@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/2.css"/>
+		<script>
+			/*需求:1、如果后面符号是个加号，点击的时候展开自己的内容，合上其它的内容。同时加号变成叉号
+                  2、如果后面符号是个叉，点击的时候只合上自己的内容。同时叉号变成加号
+              分析：类似选项卡  1、获取符号、li里的ul
+                               2、给符号添加点击事件
+    1、判断符号状态，if选择
+    2、把所有的ul全部隐藏
+	3、给当前点击的按钮旋转角度
+	4、让当前点击的按钮对应的ul，让它显示
+	*/
+		window.onload=function(){
+		var spans=document.querySelectorAll('span');
+		var uls=document.querySelectorAll('li ul');
+		for(var i=0;i<spans.length;i++){
+			spans[i].index=i;
+			spans[i].onclick=function(){
+				if(spans[this.index].style.transform=='rotate(45deg)'){
+							spans[this.index].style.transform='rotate(0deg)';
+							uls[this.index].style.display='none';
+						}else{
+				for(var i=0;i<spans.length;i++){
+					spans[i].style.transform = 'rotate(0deg)'; 
+					uls[i].style.display='none';
+				}
+				this.style.transform = 'rotate(45deg)'; 
+							uls[this.index].style.display = 'block';
+			}
+		}
+	}
+		}
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li>
+					<div>
+						Home<span style="transform: rotate(45deg);">+</span>
+					</div>
+					<ul style="display: block;">
+						<li><a href="#">Web Desigh</a></li>
+						<li><a href="#">Hosting</a></li>
+						<li><a href="#">Design</a></li>
+						<li><a href="#">Consulting</a></li>
+					</ul>
+				</li>
+				<li>
+					<div>
+						Events<span>+</span>
+					</div>
+					<ul>
+						<li><a href="#">Click</a></li>
+						<li><a href="#">Mouseover</a></li>
+						<li><a href="#">Mouseout</a></li>
+						<li><a href="#">Dbclick</a></li>
+					</ul>
+				</li>
+				<li>
+					<div>
+						Gallery<span>+</span>
+					</div>
+					<ul>
+						<li><a href="#">Graphics</a></li>
+						<li><a href="#">Vectors</a></li>
+						<li><a href="#">Photoshop</a></li>
+					</ul>
+				</li>
+				<li>
+					<div>
+						Service<span>+</span>
+					</div>
+					<ul>
+						<li><a href="#">Web Desigh</a></li>
+						<li><a href="#">Hosting</a></li>
+						<li><a href="#">Design</a></li>
+						<li><a href="#">Consulting</a></li>
+					</ul>
+				</li>
+				<li>
+					<div>
+						Porfolio<span>+</span>
+					</div>
+					<ul>
+						<li><a href="#">Web Desigh</a></li>
+						<li><a href="#">Hosting</a></li>
+						<li><a href="#">Design</a></li>
+						<li><a href="#">Consulting</a></li>
+					</ul>
+				</li>
+				<li>
+					<div>
+						About<span>+</span>
+					</div>
+					<ul>
+						<li><a href="#">Web Desigh</a></li>
+						<li><a href="#">Hosting</a></li>
+						<li><a href="#">Design</a></li>
+						<li><a href="#">Consulting</a></li>
+					</ul>
+				</li>
+				<li>
+					<div>
+						Concat<span>+</span>
+					</div>
+					<ul>
+						<li><a href="#">Web Desigh</a></li>
+						<li><a href="#">Hosting</a></li>
+						<li><a href="#">Design</a></li>
+						<li><a href="#">Consulting</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

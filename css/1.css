@@ -1,0 +1,9 @@
+section div{
+	width: 100px;
+	height: 100px;
+	opacity: 0.2;
+	margin: 0;
+	padding: 0;
+	background: black;
+	position: absolute;
+}
